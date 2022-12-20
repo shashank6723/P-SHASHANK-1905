@@ -1,0 +1,27 @@
+def binary_search(list, pivot):
+  low=0
+  high=len(list)-1
+
+  while low<=high:
+    mid=(low+high)//2
+    if pivot in list:
+      if list[mid]==pivot:
+        print("Number matched")
+        break
+      elif pivot<list[mid]:
+        high=mid-1
+      else:
+        low=mid+1
+    else:
+      print('Number not matched')
+      break
+
+ls=[]
+n=int(input('Enter number of elements '))
+for i in range(0,n):
+  element=int(input('Enter element '))
+  ls.append(element)
+print(ls)
+num=int(input('Enter num number '))
+
+binary_search(ls, num)
