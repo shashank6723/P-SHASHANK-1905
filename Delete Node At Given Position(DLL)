@@ -1,0 +1,68 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+
+class doublyLL:
+    def __init__(self):
+        self.head = None
+    
+    
+    def print_LL(self):
+        if self.head is None:
+            print("The list is empty")
+            return
+        else:
+            n = self.head
+            while n is not None:
+                print(n.data,"-->",end='')
+                n = n.next
+    
+    def add_begin(self,data):
+      new_node=Node(data)
+      if self.head is None:
+        self.head=new_node
+      else:
+        new_node.next=self.head
+        self.head.prev=new_node
+        self.head=new_node
+
+    def del_middle(self,x):
+      if self.head is None:
+        print('DLL is empty')
+        return
+      if self.head.next is None:
+        if x==self.head.data:
+          self.head=None
+        else:
+          print('x is not present in the list only')
+        return
+      if self.head.data==x:
+        self.head=self.head.next
+        self.head.prev=None
+        return
+      n=self.head
+      while n.next is not None:
+        if x==n.data:
+          break
+        n=n.next
+      if n.next is not None:
+        n.next.prev=n.prev
+        n.prev.next=n.next
+      else:
+        if n.data==x:
+          n.prev.next=None
+        else:
+          print("x i")
+
+LL1 = doublyLL()
+LL1.add_begin(20)
+LL1.add_begin(30)
+LL1.add_begin(40)
+LL1.add_begin(50)
+LL1.print_LL()
+print()
+LL1.del_middle(40)
+print('After deletion')
+LL1.print_LL()
