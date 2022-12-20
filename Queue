@@ -1,0 +1,38 @@
+class Queue:
+  def __init__(self,max):
+    self.max=max
+    self.Q=[]
+    self.rear=-1
+    self.front=0
+
+  def enqueue(self,ele):
+    if self.rear<self.max:
+      self.rear+=1
+      self.Q.insert(self.rear,ele)
+    else:
+      print('Queue is full')
+
+  def dequeue(self):
+    if self.front<=self.rear:
+      ele=self.Q[self.front]
+      self.front+=1
+      return ele
+    else:
+      print("Queue is empty")
+      return -1
+
+  def display(self):
+    print("Queue elements are ")
+    for i in range(self.front,self.rear+1):
+      print(self.Q[i] ,end=" ")
+    print()
+
+Q=Queue(0)
+Q.enqueue(10)
+Q.enqueue(20)
+Q.enqueue(30)
+Q.enqueue(40)
+Q.display()
+Q.dequeue()
+print('After deletion')
+Q.display()
